@@ -2,8 +2,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 public class Login extends JFrame implements ActionListener {
     JButton login,cancel;
+    JTextField jtextf,pas;
     Login(){
 
         getContentPane().setBackground(Color.WHITE);
@@ -13,7 +15,7 @@ public class Login extends JFrame implements ActionListener {
         jbl.setBounds(40,20,100,20);
         add(jbl);
 
-        JTextField jtextf=new JTextField();
+         jtextf=new JTextField();
         jtextf.setBounds(150,20,150,20);
         add(jtextf);
 
@@ -21,7 +23,7 @@ public class Login extends JFrame implements ActionListener {
         pass.setBounds(40,70,100,20);
         add(pass);
 
-        JPasswordField pas=new JPasswordField();
+         pas=new JPasswordField();
         pas.setBounds(150,70,150,20);
         add(pas);
 
@@ -56,7 +58,25 @@ public class Login extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ar){
           if(ar.getSource() == login){
+             String username=jtextf.getText();
+             String password=pas.getText();
 
+             String query= "select * from login where username='"+username+"'and password='"+password+"'";
+             try{
+                Connections c=new Connections();
+                ResultSet rs=c.s.executeQuery(query);
+//                c.s.executeQuery(query);
+                 if(rs.next()){
+                     setVisible(false);
+                     new Project();
+                 }
+                 else{
+                     JOptionPane.showMessageDialog(null,"Invalid Username or Password");
+                     setVisible(false);
+                 }
+             }catch(Exception e){
+                 e.printStackTrace();
+             }
           }
           else if(ar.getSource() == cancel){
                setVisible(false);
