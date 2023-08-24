@@ -1,10 +1,12 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.util.*;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.*;
-public class AddStudent extends JFrame implements ActionListener {
+public class AddTeacher extends JFrame implements ActionListener {
     JTextField tfname,tffname,tfaddress,tfphone,tfmail,tfxiimarks,tfxmarks,tfadhar;
     JLabel labrollno;
     JComboBox cbcourse,cbbranch;
@@ -15,11 +17,11 @@ public class AddStudent extends JFrame implements ActionListener {
     long first4=Math.abs((ran.nextLong() % 9000L) + 1000L);
 
 
-    AddStudent(){
+    AddTeacher(){
         setSize(900,700);
         setLocation(350,50);
         setLayout(null);
-        JLabel heading =new JLabel("New Student Details");
+        JLabel heading =new JLabel("New Teacher Details");
         heading.setBounds(310,30,500,50);
         heading.setFont(new Font("Serif", Font.BOLD,30));
         add(heading);
@@ -42,12 +44,12 @@ public class AddStudent extends JFrame implements ActionListener {
         tffname.setBounds(600,150,150,30);
         add(tffname);
 
-        JLabel Lrollno =new JLabel("Roll Number");
+        JLabel Lrollno =new JLabel("Staff Id");
         Lrollno.setBounds(50,200,200,30);
         Lrollno.setFont(new Font("Serif", Font.BOLD,20));
         add(Lrollno);
 
-        labrollno =new JLabel("2020BTE"+first4);
+        labrollno =new JLabel("2020TECH"+first4);
         labrollno.setBounds(200,200,200,30);
         labrollno.setFont(new Font("Serif", Font.BOLD,20));
         add(labrollno);
@@ -117,7 +119,7 @@ public class AddStudent extends JFrame implements ActionListener {
         tfadhar.setBounds(600,350,150,30);
         add(tfadhar);
 
-        JLabel lblcourse =new JLabel("Course");
+        JLabel lblcourse =new JLabel("Qualification");
         lblcourse.setBounds(50,400,200,30);
         lblcourse.setFont(new Font("Serif", Font.BOLD,20));
         add(lblcourse);
@@ -173,12 +175,12 @@ public class AddStudent extends JFrame implements ActionListener {
             String course = (String) cbcourse.getSelectedItem();
             String branch = (String) cbbranch.getSelectedItem();
             try {
-                String query = "insert into student values('"+name+"', '"+fname+"', '"+rollno+"', '"+dob+"', '"+address+"', '"+phone+"', '"+email+"', '"+x+"', '"+xii+"', '"+aadhar+"', '"+course+"', '"+branch+"')";
+                String query = "insert into teacher values('"+name+"', '"+fname+"', '"+rollno+"', '"+dob+"', '"+address+"', '"+phone+"', '"+email+"', '"+x+"', '"+xii+"', '"+aadhar+"', '"+course+"', '"+branch+"')";
 
                 Connections con = new Connections();
                 con.s.executeUpdate(query);
 
-                JOptionPane.showMessageDialog(null, "Student Details Inserted Successfully");
+                JOptionPane.showMessageDialog(null, "Teacher Details Inserted Successfully");
                 setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -188,6 +190,6 @@ public class AddStudent extends JFrame implements ActionListener {
         }
     }
     public static void main(String[] args) {
-        new AddStudent();
+        new AddTeacher();
     }
 }

@@ -21,10 +21,12 @@ setSize(1540,850);
 
     JMenuItem facultyInfo= new JMenuItem("New Faculty Information");
     facultyInfo.setBackground(Color.WHITE);
+        facultyInfo.addActionListener(this);
     newInformation.add(facultyInfo);
 
     JMenuItem studentInfo= new JMenuItem("New Student Information");
     studentInfo.setBackground(Color.WHITE);
+        studentInfo.addActionListener(this);
     newInformation.add(studentInfo);
 
     JMenu details= new JMenu("View Details");
@@ -33,11 +35,13 @@ setSize(1540,850);
 
     JMenuItem facultyDetails= new JMenuItem("View Faculty Details");
         facultyDetails.setBackground(Color.WHITE);
+
     details.add(facultyDetails);
 
     JMenuItem studentDetails= new JMenuItem("View Student Details");
         studentDetails.setBackground(Color.WHITE);
-    details.add(studentDetails);
+        studentDetails.addActionListener(this);
+        details.add(studentDetails);
 
         JMenu leave= new JMenu("Apply Leave");
         leave.setForeground(Color.BLUE);
@@ -132,6 +136,14 @@ setSize(1540,850);
              }catch (Exception e){
 
              }
+         }
+         else if(msg.equals("New Faculty Information")){
+             new AddTeacher();
+         } else if (msg.equals("New Student Information")) {
+             new AddStudent();
+         }
+         else if(msg.equals("View Student Details")){
+             new StudentDetails();
          }
     }
     public static void main(String[] args) {
