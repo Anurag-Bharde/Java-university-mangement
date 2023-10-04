@@ -35,7 +35,7 @@ setSize(1540,850);
 
     JMenuItem facultyDetails= new JMenuItem("View Faculty Details");
         facultyDetails.setBackground(Color.WHITE);
-
+        facultyDetails.addActionListener(this);
     details.add(facultyDetails);
 
     JMenuItem studentDetails= new JMenuItem("View Student Details");
@@ -144,6 +144,9 @@ setSize(1540,850);
          }
          else if(msg.equals("View Student Details")){
              new StudentDetails();
+         }
+         else if(msg.equals("View Faculty Details")){
+             new TeacherDetails();
          }
     }
     public static void main(String[] args) {
