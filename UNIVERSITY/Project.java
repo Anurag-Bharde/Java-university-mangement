@@ -45,14 +45,17 @@ setSize(1540,850);
 
         JMenu leave= new JMenu("Apply Leave");
         leave.setForeground(Color.BLUE);
-        mb.add(details);
+
+        mb.add(leave);
 
         JMenuItem facultyleave= new JMenuItem("Faculty Leave");
         facultyleave.setBackground(Color.WHITE);
+        facultyleave.addActionListener(this);
         leave.add(facultyleave);
 
         JMenuItem studentleave= new JMenuItem("Student Leave");
         studentleave.setBackground(Color.WHITE);
+        studentleave.addActionListener(this);
         leave.add(studentleave);
 
         JMenu exam= new JMenu("Examinations");
@@ -147,6 +150,11 @@ setSize(1540,850);
          }
          else if(msg.equals("View Faculty Details")){
              new TeacherDetails();
+         }
+         else if(msg.equals("Faculty Leave")){
+             new TeacherLeave();
+         } else if (msg.equals("Student Leave")) {
+             new StudentLeave();
          }
     }
     public static void main(String[] args) {
