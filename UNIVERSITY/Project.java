@@ -58,6 +58,21 @@ setSize(1540,850);
         studentleave.addActionListener(this);
         leave.add(studentleave);
 
+        JMenu leaveDetails=new JMenu("Leave Details");
+        leaveDetails.setForeground(Color.RED);
+        mb.add(leaveDetails);
+
+        JMenuItem facultyleavedetails =new JMenuItem("Faculty Leave Details");
+        facultyleavedetails.setBackground(Color.WHITE);
+        facultyleavedetails.addActionListener(this);
+        leaveDetails.add(facultyleavedetails);
+
+        JMenuItem studetleavedetails= new JMenuItem("Student Leave Details");
+        studetleavedetails.setBackground(Color.WHITE);
+        studetleavedetails.addActionListener(this);
+        leaveDetails.add(studetleavedetails);
+
+
         JMenu exam= new JMenu("Examinations");
         exam.setForeground(Color.BLUE);
         mb.add(exam);
@@ -155,7 +170,12 @@ setSize(1540,850);
              new TeacherLeave();
          } else if (msg.equals("Student Leave")) {
              new StudentLeave();
+         }else if(msg.equals("Faculty Leave Details")) {
+             new TeacherLeaveDetails();
+         }else if(msg.equals("Student Leave Details")){
+             new StudentLeaveDetails();
          }
+
     }
     public static void main(String[] args) {
         new Project();
